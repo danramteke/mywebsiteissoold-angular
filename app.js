@@ -1,13 +1,12 @@
 'use strict';
 
-var MyWebsiteIsSoOld = MyWebsiteIsSoOld || {};
-
+var MyWebsiteIsSoOld = angular.module("mywebsiteissoold", ['ng', 'mywebsiteissoold.display', 'mywebsiteissoold.retrieve'])
 MyWebsiteIsSoOld.Display = angular.module('mywebsiteissoold.display', []);
 MyWebsiteIsSoOld.Retrieve = angular.module('mywebsiteissoold.retrieve', []);
 
-angular.module("mywebsiteissoold", ['ng', 'mywebsiteissoold.display', 'mywebsiteissoold.retrieve'])
-.run(function($rootScope, $log, $injector, FetchTweetsService, TweetStore){
-	$log.log("running run");
+
+MyWebsiteIsSoOld.run(function($rootScope, $log, FetchTweetsService, TweetStore){
+	$log.log("runing app");
 	var tweets = FetchTweetsService.loadTweets();
 	TweetStore.updateTweets(tweets);
 });
