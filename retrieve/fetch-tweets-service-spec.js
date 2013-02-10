@@ -1,19 +1,23 @@
 'use strict';
 
 describe("FetchTweetsService", function(){
-	var service;
+	var service, mockTweetStore;
 	
 	beforeEach(module('mywebsiteissoold.retrieve'));
 	beforeEach(inject(function(FetchTweetsService){
 		service = FetchTweetsService;
+    mockTweetStore = {updateTweets: function() {}};
+    spyOn(mockTweetStore, "updateTweets").andCallThrough();
 	}))
 	
-	it("returns a constant", function(){
-    var loadedTweets = service.loadTweets();
-		expect(loadedTweets[0]).toBe("tweet 1");
-		expect(loadedTweets[1]).toBe("tweet 2");
-		expect(loadedTweets.length).toBe(2);
-	});
+	it("updates tweets on store", inject(function($httpBackend){
+    $httpBackend.expectGET(service.url).respond({tweets:"some tweety stuff"});
+    service.loadTweets(mockTweetStore);
+
+    $httpBackend.flush();
+    expect(mockTweetStore.updateTweets).toHaveBeenCalledWith("some tweety stuff");
+	}));
 	
+
 
 });

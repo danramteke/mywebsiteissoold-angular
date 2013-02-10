@@ -12,9 +12,9 @@ describe("TweetController", function(){
 	}))
 	
 	it("exposes tweets", function(){
-		expect(tweets.length).toBe(scope.tweets.length);
+		expect(tweets.length).toBe(scope.tweetStore.tweets.length);
     for(var i = 0; i < tweets.length; i++){
-      	expect(scope.tweets[i]).toBe(tweets[i]);
+      	expect(scope.tweetStore.tweets[i]).toBe(tweets[i]);
     }
 	});
 	

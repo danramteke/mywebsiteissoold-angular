@@ -7,8 +7,8 @@ MyWebsiteIsSoOld.Retrieve = angular.module('mywebsiteissoold.retrieve', []);
 
 MyWebsiteIsSoOld.run(function($rootScope, $log, FetchTweetsService, TweetStore){
 	$log.log("runing app");
-	var tweets = FetchTweetsService.loadTweets();
-	TweetStore.updateTweets(tweets);
+  FetchTweetsService.loadTweets(TweetStore);
+
 });
 
 

@@ -1,12 +1,16 @@
 'use strict';
 
-MyWebsiteIsSoOld.Retrieve.factory('FetchTweetsService', function($rootScope, $log){
-	var url = "https://raw.github.com/danramteke/mywebsiteissoold/master/data.yml";
+MyWebsiteIsSoOld.Retrieve.factory('FetchTweetsService', function($rootScope, $log, $http){
 	return {
-		loadTweets: function() {
-			$log.log("loading tweets");
-			return ["tweet 1", "tweet 2"];
-		}
-	}
-	
+    url: "tweets.json",
+		loadTweets: function(store) {
+
+        $http.get(this.url).then(function (successResponse) { 
+          store.updateTweets(successResponse.data.tweets); 
+        }, function () {
+          $log.error("\tError in AJAX"); 
+          throw {type:"error", message:"Error in AJAX", fatal:false}; 
+        }); 
+      }
+    }
 });
