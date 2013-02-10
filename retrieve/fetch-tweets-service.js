@@ -8,8 +8,7 @@ MyWebsiteIsSoOld.Retrieve.factory('FetchTweetsService', function($rootScope, $lo
         $http.get(this.url).then(function (successResponse) { 
           store.updateTweets(successResponse.data.tweets); 
         }, function () {
-          $log.error("\tError in AJAX"); 
-          throw {type:"error", message:"Error in AJAX", fatal:false}; 
+          $log.error("Error in AJAX"); 
         }); 
       }
     }

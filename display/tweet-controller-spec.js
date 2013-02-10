@@ -6,15 +6,15 @@ describe("TweetController", function(){
 	beforeEach(module('mywebsiteissoold.display'));
 	beforeEach(inject(function($controller){
     tweets = ["@aedison", "@kellyoxford", "@biorhythmist"];
-		tweetStore = {tweets: tweets}
+		tweetStore = {getTweets: function(){return tweets;}};
     scope = {};
     controller = $controller('TweetController', {TweetStore:tweetStore, $scope:scope})
 	}))
 	
 	it("exposes tweets", function(){
-		expect(tweets.length).toBe(scope.tweetStore.tweets.length);
+		expect(tweets.length).toBe(scope.tweets().length);
     for(var i = 0; i < tweets.length; i++){
-      	expect(scope.tweetStore.tweets[i]).toBe(tweets[i]);
+      	expect(scope.tweets()[i]).toBe(tweets[i]);
     }
 	});
 	

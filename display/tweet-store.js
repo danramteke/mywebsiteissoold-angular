@@ -7,7 +7,10 @@ MyWebsiteIsSoOld.Display.factory('TweetStore', function($log){
 		updateTweets: function(newTweets){
       $log.log("tweet store got new tweets");
 			this.tweets = newTweets;
-		}
+		},
+    getTweets: function(){
+      return this.tweets;
+    }
 	}
 	
 });
