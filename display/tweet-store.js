@@ -10,6 +10,12 @@ MyWebsiteIsSoOld.Display.factory('TweetStore', function($log){
 		},
     getTweets: function(){
       return this.tweets;
+    },
+    hasTweets: function(){
+      return this.tweets.length > 0;
+    },
+    getTweet: function(index){
+      return this.tweets[index%this.tweets.length];
     }
 	}
 	

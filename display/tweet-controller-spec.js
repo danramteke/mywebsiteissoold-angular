@@ -4,19 +4,21 @@ describe("TweetController", function(){
 	var controller, scope, tweetStore, tweets;
 	
 	beforeEach(module('mywebsiteissoold.display'));
-	beforeEach(inject(function($controller){
-    tweets = ["@aedison", "@kellyoxford", "@biorhythmist"];
-		tweetStore = {getTweets: function(){return tweets;}};
+	beforeEach(inject(function($controller, TweetStore){
+    TweetStore.updateTweets([
+      {text:"a tweet"}, {text:"a nother one"}
+    ]);
     scope = {};
-    controller = $controller('TweetController', {TweetStore:tweetStore, $scope:scope})
+    controller = $controller('TweetController', {TweetStore:TweetStore, $scope:scope})
 	}))
 	
-	it("exposes tweets", function(){
-		expect(tweets.length).toBe(scope.tweets().length);
-    for(var i = 0; i < tweets.length; i++){
-      	expect(scope.tweets()[i]).toBe(tweets[i]);
-    }
+	it("exposes current tweet", function(){
+		expect(scope.currentTweet().text).toBe("a tweet");
 	});
 	
+	it("advances to second tweet", function(){
+    scope.nextTweet();
+		expect(scope.currentTweet().text).toBe("a nother one");
+	});
 
 });

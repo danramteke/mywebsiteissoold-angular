@@ -11,15 +11,24 @@
 	<script src="display/tweet-store.js"></script>
 	<script src="display/tweet-controller.js"></script>
 	<script src="retrieve/fetch-tweets-service.js"></script>
+  <style type="text/css">
+  #tweetDisplay{
+    border: 5px blue solid;
+    height: 40px;
+    padding: 5px;
+    border-radius: 2px;
+  }
+  </style>
 </head>
 <body>
-	Condensation
+	<h1>My Website is So Old ...</h1>
 	
 	<div ng-controller="TweetController">
-		<ul>
-			<li ng-repeat="tweet in tweets()">{{tweet}}</li>
-		</ul>
+		<div id="tweetDisplay"><a href="{{currentTweet().url}}">{{currentTweet().text}}</a></div>
+    <button ng-click="nextTweet()">Show another one!</button>
 	</div>
 	
+
+  
 </body>
 </html>
