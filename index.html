@@ -11,24 +11,35 @@
 	<script src="display/tweet-store.js"></script>
 	<script src="display/tweet-controller.js"></script>
 	<script src="retrieve/fetch-tweets-service.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.8.1/build/cssreset/cssreset-min.css">
   <style type="text/css">
+  body {
+    margin: 0 auto;
+    width: 320px;
+    border: #ccc solid 1px;
+        background-color: yellow;
+  }
+  body, input {
+      font-family: verdana, sans-serif;
+      font-size: 24pt;
+  }
+  div a {
+    font-size: 14pt;
+  }
   #tweetDisplay{
-    border: 5px blue solid;
-    height: 40px;
+
+    margin-top: 50px;
     padding: 5px;
     border-radius: 2px;
+    height: 300px;
   }
   </style>
 </head>
-<body>
-	<h1>My Website is So Old ...</h1>
+<body ng-controller="TweetController" ng-click="nextTweet()">
 	
-	<div ng-controller="TweetController">
-		<div id="tweetDisplay"><a href="{{currentTweet().url}}">{{currentTweet().text}}</a></div>
-    <button ng-click="nextTweet()">Show another one!</button>
+	<div>
+		<div id="tweetDisplay">{{currentTweet().text}}</div>
 	</div>
-	
-
   
 </body>
 </html>
