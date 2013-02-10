@@ -6,7 +6,8 @@ describe("TweetController", function(){
 	beforeEach(module('mywebsiteissoold.display'));
 	beforeEach(inject(function($controller, TweetStore){
     TweetStore.updateTweets([
-      {text:"a tweet"}, {text:"a nother one"}
+      {text:"a tweet"}, 
+      {text:"a nother one"}
     ]);
     scope = {};
     controller = $controller('TweetController', {TweetStore:TweetStore, $scope:scope})

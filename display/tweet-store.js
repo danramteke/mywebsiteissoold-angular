@@ -1,7 +1,7 @@
 'use strict';
 
 MyWebsiteIsSoOld.Display.factory('TweetStore', function($log){
-	
+
 	return {
 		tweets: [],
 		updateTweets: function(newTweets){
@@ -16,6 +16,9 @@ MyWebsiteIsSoOld.Display.factory('TweetStore', function($log){
     },
     getTweet: function(index){
       return this.tweets[index%this.tweets.length];
+    }, 
+    getSize: function() {
+      return this.tweets.length;
     }
 	}
 	

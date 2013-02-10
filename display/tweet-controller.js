@@ -1,7 +1,6 @@
 'use strict';
 
 MyWebsiteIsSoOld.Display.controller('TweetController', function($rootScope, $scope, $log, TweetStore) {
-
   $scope.currentIndex = 0;
   $scope.currentTweet = function() {
     if(TweetStore.hasTweets()) {

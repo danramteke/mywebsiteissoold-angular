@@ -15,6 +15,7 @@ describe("TweetStore", function(){
 	it("gets updated with tweets", function(){
 		tweetStore.updateTweets([{},{},{},{}])
 		expect(tweetStore.hasTweets()).toBe(true);
+		expect(tweetStore.getSize()).toBe(4);
 	});
   
   it("gets a tweet by index", function(){
