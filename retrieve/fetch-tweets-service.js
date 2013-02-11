@@ -8,7 +8,6 @@ MyWebsiteIsSoOld.Retrieve.factory('FetchTweetsService', function($rootScope, $lo
 	return {
     url: "tweets.json",
 		loadTweets: function(store) {
-
         $http.get(this.url).then(function (successResponse) { 
           store.updateTweets(shuffle(successResponse.data.tweets));
         }, function () {
